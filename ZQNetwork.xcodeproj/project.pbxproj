@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7CDE2C211D55978B0009CF28 /* ZQURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDE2C201D55978B0009CF28 /* ZQURLResponse.m */; };
+		7CDE2C251D559E6A0009CF28 /* ZQApiRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDE2C241D559E6A0009CF28 /* ZQApiRequest.m */; };
 		B25952AE1D5037590051BB46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B25952AD1D5037590051BB46 /* main.m */; };
 		B25952B11D5037590051BB46 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B25952B01D5037590051BB46 /* AppDelegate.m */; };
 		B25952B41D5037590051BB46 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B25952B31D5037590051BB46 /* ViewController.m */; };
 		B25952B71D5037590051BB46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B25952B51D5037590051BB46 /* Main.storyboard */; };
 		B25952B91D5037590051BB46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B25952B81D5037590051BB46 /* Assets.xcassets */; };
 		B25952BC1D5037590051BB46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B25952BA1D5037590051BB46 /* LaunchScreen.storyboard */; };
-		B291DFE61D5038FB003992C1 /* CTApiRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B291DFE51D5038FB003992C1 /* CTApiRequest.m */; };
 		B6F802A456DD521FEA7463A2 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFE714D33FD8EFCCFF85AB7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -21,6 +22,11 @@
 		18A92F54AD0AD94CC78BEE98 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		2EFE714D33FD8EFCCFF85AB7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5317393426C50B1645CB8C67 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		7CDE2C181D5585DF0009CF28 /* ZQConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQConstant.h; sourceTree = "<group>"; };
+		7CDE2C1F1D55978B0009CF28 /* ZQURLResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQURLResponse.h; sourceTree = "<group>"; };
+		7CDE2C201D55978B0009CF28 /* ZQURLResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQURLResponse.m; sourceTree = "<group>"; };
+		7CDE2C231D559E6A0009CF28 /* ZQApiRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQApiRequest.h; sourceTree = "<group>"; };
+		7CDE2C241D559E6A0009CF28 /* ZQApiRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQApiRequest.m; sourceTree = "<group>"; };
 		B25952A91D5037590051BB46 /* ZQNetwork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZQNetwork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B25952AD1D5037590051BB46 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B25952AF1D5037590051BB46 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -31,8 +37,6 @@
 		B25952B81D5037590051BB46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B25952BB1D5037590051BB46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B25952BD1D5037590051BB46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B291DFE41D5038FB003992C1 /* CTApiRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTApiRequest.h; sourceTree = "<group>"; };
-		B291DFE51D5038FB003992C1 /* CTApiRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTApiRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,24 @@
 				2EFE714D33FD8EFCCFF85AB7 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7CDE2C1E1D55978B0009CF28 /* URLResponse */ = {
+			isa = PBXGroup;
+			children = (
+				7CDE2C1F1D55978B0009CF28 /* ZQURLResponse.h */,
+				7CDE2C201D55978B0009CF28 /* ZQURLResponse.m */,
+			);
+			path = URLResponse;
+			sourceTree = "<group>";
+		};
+		7CDE2C221D559E6A0009CF28 /* APIRequest */ = {
+			isa = PBXGroup;
+			children = (
+				7CDE2C231D559E6A0009CF28 /* ZQApiRequest.h */,
+				7CDE2C241D559E6A0009CF28 /* ZQApiRequest.m */,
+			);
+			path = APIRequest;
 			sourceTree = "<group>";
 		};
 		B25952A01D5037590051BB46 = {
@@ -80,8 +102,9 @@
 				B25952B01D5037590051BB46 /* AppDelegate.m */,
 				B25952B21D5037590051BB46 /* ViewController.h */,
 				B25952B31D5037590051BB46 /* ViewController.m */,
-				B291DFE41D5038FB003992C1 /* CTApiRequest.h */,
-				B291DFE51D5038FB003992C1 /* CTApiRequest.m */,
+				7CDE2C221D559E6A0009CF28 /* APIRequest */,
+				7CDE2C1E1D55978B0009CF28 /* URLResponse */,
+				7CDE2C181D5585DF0009CF28 /* ZQConstant.h */,
 				B25952B51D5037590051BB46 /* Main.storyboard */,
 				B25952B81D5037590051BB46 /* Assets.xcassets */,
 				B25952BA1D5037590051BB46 /* LaunchScreen.storyboard */,
@@ -230,9 +253,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B25952B41D5037590051BB46 /* ViewController.m in Sources */,
+				7CDE2C211D55978B0009CF28 /* ZQURLResponse.m in Sources */,
 				B25952B11D5037590051BB46 /* AppDelegate.m in Sources */,
+				7CDE2C251D559E6A0009CF28 /* ZQApiRequest.m in Sources */,
 				B25952AE1D5037590051BB46 /* main.m in Sources */,
-				B291DFE61D5038FB003992C1 /* CTApiRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
