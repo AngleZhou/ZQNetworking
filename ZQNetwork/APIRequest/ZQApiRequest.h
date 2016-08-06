@@ -17,4 +17,6 @@ typedef void (^networkCallback)(ZQURLResponse *response);
 - (void)callPostWithParam:(NSDictionary *)param urlString:(NSString *)url success:(networkCallback)success failure:(networkCallback)failure;
 - (void)callPutWithParam:(NSDictionary *)param urlString:(NSString *)url success:(networkCallback)success failure:(networkCallback)failure;
 - (void)callDeleteWithParam:(NSDictionary *)param urlString:(NSString *)url success:(networkCallback)success failure:(networkCallback)failure;
+
+- (void)cancelRequestWithRequestID:(NSNumber *)requestID;
 @end

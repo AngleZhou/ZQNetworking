@@ -14,11 +14,14 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - Bugly (2.3.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - Bugly (~> 2.3.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Bugly: c8ece2fa5bdcb404abdd0e07131e8129f580d893
 
 COCOAPODS: 0.39.0

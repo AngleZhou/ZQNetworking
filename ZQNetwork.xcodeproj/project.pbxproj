@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		7CDE2C211D55978B0009CF28 /* ZQURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDE2C201D55978B0009CF28 /* ZQURLResponse.m */; };
 		7CDE2C251D559E6A0009CF28 /* ZQApiRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDE2C241D559E6A0009CF28 /* ZQApiRequest.m */; };
+		7CDE2C2A1D561B090009CF28 /* ZQLogTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDE2C291D561B090009CF28 /* ZQLogTool.m */; };
+		7CDE2C301D5623E70009CF28 /* NSMutableString+appendURLRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDE2C2F1D5623E70009CF28 /* NSMutableString+appendURLRequest.m */; };
+		7CDE2C331D5626050009CF28 /* ZQCommonParamGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CDE2C321D5626050009CF28 /* ZQCommonParamGenerator.m */; };
 		B25952AE1D5037590051BB46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B25952AD1D5037590051BB46 /* main.m */; };
 		B25952B11D5037590051BB46 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B25952B01D5037590051BB46 /* AppDelegate.m */; };
 		B25952B41D5037590051BB46 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B25952B31D5037590051BB46 /* ViewController.m */; };
@@ -27,6 +30,12 @@
 		7CDE2C201D55978B0009CF28 /* ZQURLResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQURLResponse.m; sourceTree = "<group>"; };
 		7CDE2C231D559E6A0009CF28 /* ZQApiRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQApiRequest.h; sourceTree = "<group>"; };
 		7CDE2C241D559E6A0009CF28 /* ZQApiRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQApiRequest.m; sourceTree = "<group>"; };
+		7CDE2C281D561B090009CF28 /* ZQLogTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQLogTool.h; sourceTree = "<group>"; };
+		7CDE2C291D561B090009CF28 /* ZQLogTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQLogTool.m; sourceTree = "<group>"; };
+		7CDE2C2E1D5623E70009CF28 /* NSMutableString+appendURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+appendURLRequest.h"; sourceTree = "<group>"; };
+		7CDE2C2F1D5623E70009CF28 /* NSMutableString+appendURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+appendURLRequest.m"; sourceTree = "<group>"; };
+		7CDE2C311D5626050009CF28 /* ZQCommonParamGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQCommonParamGenerator.h; sourceTree = "<group>"; };
+		7CDE2C321D5626050009CF28 /* ZQCommonParamGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQCommonParamGenerator.m; sourceTree = "<group>"; };
 		B25952A91D5037590051BB46 /* ZQNetwork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZQNetwork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B25952AD1D5037590051BB46 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B25952AF1D5037590051BB46 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -73,8 +82,21 @@
 			children = (
 				7CDE2C231D559E6A0009CF28 /* ZQApiRequest.h */,
 				7CDE2C241D559E6A0009CF28 /* ZQApiRequest.m */,
+				7CDE2C311D5626050009CF28 /* ZQCommonParamGenerator.h */,
+				7CDE2C321D5626050009CF28 /* ZQCommonParamGenerator.m */,
 			);
 			path = APIRequest;
+			sourceTree = "<group>";
+		};
+		7CDE2C271D561AFC0009CF28 /* LogTool */ = {
+			isa = PBXGroup;
+			children = (
+				7CDE2C281D561B090009CF28 /* ZQLogTool.h */,
+				7CDE2C291D561B090009CF28 /* ZQLogTool.m */,
+				7CDE2C2E1D5623E70009CF28 /* NSMutableString+appendURLRequest.h */,
+				7CDE2C2F1D5623E70009CF28 /* NSMutableString+appendURLRequest.m */,
+			);
+			path = LogTool;
 			sourceTree = "<group>";
 		};
 		B25952A01D5037590051BB46 = {
@@ -102,6 +124,7 @@
 				B25952B01D5037590051BB46 /* AppDelegate.m */,
 				B25952B21D5037590051BB46 /* ViewController.h */,
 				B25952B31D5037590051BB46 /* ViewController.m */,
+				7CDE2C271D561AFC0009CF28 /* LogTool */,
 				7CDE2C221D559E6A0009CF28 /* APIRequest */,
 				7CDE2C1E1D55978B0009CF28 /* URLResponse */,
 				7CDE2C181D5585DF0009CF28 /* ZQConstant.h */,
@@ -257,6 +280,9 @@
 				B25952B11D5037590051BB46 /* AppDelegate.m in Sources */,
 				7CDE2C251D559E6A0009CF28 /* ZQApiRequest.m in Sources */,
 				B25952AE1D5037590051BB46 /* main.m in Sources */,
+				7CDE2C301D5623E70009CF28 /* NSMutableString+appendURLRequest.m in Sources */,
+				7CDE2C2A1D561B090009CF28 /* ZQLogTool.m in Sources */,
+				7CDE2C331D5626050009CF28 /* ZQCommonParamGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

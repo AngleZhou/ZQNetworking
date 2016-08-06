@@ -8,6 +8,8 @@
 
 #import "ZQApiRequest.h"
 #import "ZQURLResponse.h"
+#import "ZQLogTool.h"
+#import "ZQCommonParamGenerator.h"
 
 #import <AFNetworking.h>
 #import <AFURLSessionManager.h>
@@ -16,8 +18,10 @@
 
 
 
+
 @interface ZQApiRequest ()
 @property (nonatomic, strong) AFHTTPSessionManager *httpSessionManager;
+@property (nonatomic, strong) NSMutableDictionary *dispatchTable;
 @end
 @implementation ZQApiRequest
 
@@ -35,6 +39,12 @@
         
     }
     return self;
+}
+- (NSMutableDictionary *)dispatchTable {
+    if (!_dispatchTable) {
+        _dispatchTable = [[NSMutableDictionary alloc] init];
+    }
+    return _dispatchTable;
 }
 
 - (AFHTTPSessionManager *)httpSessionManager {
@@ -57,6 +67,13 @@
     [self requestWithMethod:@"DELETE" URLString:url param:param success:success failure:failure];
 }
 
+- (void)cancelRequestWithRequestID:(NSNumber *)requestID
+{
+    NSURLSessionDataTask *requestOperation = self.dispatchTable[requestID];
+    [requestOperation cancel];
+    [self.dispatchTable removeObjectForKey:requestID];
+}
+
 //可以在这边统一添加和处理网络连接
 - (void)requestWithMethod:(NSString *)method
                 URLString:(NSString *)URLString
@@ -64,25 +81,31 @@
                   success:(networkCallback)success
                   failure:(networkCallback)failure {
     
+    ______WS();
+    
+    NSDictionary *commonParam = [ZQCommonParamGenerator commonParamsDictionary];
+    NSMutableDictionary *finalParam = [params mutableCopy];
+    [finalParam addEntriesFromDictionary:commonParam];
     
     NSError *serializationError = nil;
-    NSMutableURLRequest *request = [self.httpSessionManager.requestSerializer requestWithMethod:method URLString:[[NSURL URLWithString:URLString relativeToURL:self.httpSessionManager.baseURL] absoluteString] parameters:params error:&serializationError];
+    NSMutableURLRequest *request = [self.httpSessionManager.requestSerializer requestWithMethod:method URLString:[[NSURL URLWithString:URLString relativeToURL:self.httpSessionManager.baseURL] absoluteString] parameters:finalParam error:&serializationError];
     if (serializationError) {
         NSLog(@"network request serialize error:%@", [serializationError localizedDescription]);
     }
     
     //检查网络连接状态
     if ([[AFNetworkReachabilityManager sharedManager] isReachable]) {
-        //TODO: //添加共同的请求参数
         
         NSLog(@"\n==================================\n\nRequest Start: \n\n %@\n\n==================================", request.URL);
         
         __block NSURLSessionDataTask *dataTask = nil;
         dataTask = [self.httpSessionManager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-            NSData *responseData = responseObject;
+            [wSelf.dispatchTable removeObjectForKey:@([dataTask taskIdentifier])];
             
+            NSData *responseData = responseObject;
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
             ZQURLResponse *zqResponse = [[ZQURLResponse alloc] initWithResponse:responseData error:error];
-            //TODO: log
+            [ZQLogTool logDebugInfoWithResponse:httpResponse error:error withRequest:request];
             if (error) {
                 failure ? failure(zqResponse) : nil;
             }
@@ -90,6 +113,9 @@
                 success ? success(zqResponse) : nil;
             }
         }];
+        
+        
+        self.dispatchTable[@([dataTask taskIdentifier])] = dataTask;
         
         [dataTask resume];
     }
