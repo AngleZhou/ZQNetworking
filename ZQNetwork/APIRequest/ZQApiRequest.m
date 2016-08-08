@@ -26,7 +26,7 @@
 @implementation ZQApiRequest
 
 
-+ (instancetype)manager {
++ (instancetype)sharedInstance {
     static ZQApiRequest *apir;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -54,16 +54,16 @@
     return _httpSessionManager;
 }
 
-- (void)callGetWithParam:(NSDictionary *)param urlString:(NSString *)url success:(networkCallback)success failure:(networkCallback)failure {
+- (void)callGETWithParam:(NSDictionary *)param urlString:(NSString *)url success:(networkCallback)success failure:(networkCallback)failure {
     [self requestWithMethod:@"GET" URLString:url param:param success:success failure:failure];
 }
-- (void)callPostWithParam:(NSDictionary *)param urlString:(NSString *)url success:(networkCallback)success failure:(networkCallback)failure {
+- (void)callPOSTWithParam:(NSDictionary *)param urlString:(NSString *)url success:(networkCallback)success failure:(networkCallback)failure {
     [self requestWithMethod:@"POST" URLString:url param:param success:success failure:failure];
 }
-- (void)callPutWithParam:(NSDictionary *)param urlString:(NSString *)url success:(networkCallback)success failure:(networkCallback)failure {
+- (void)callPUTWithParam:(NSDictionary *)param urlString:(NSString *)url success:(networkCallback)success failure:(networkCallback)failure {
     [self requestWithMethod:@"PUT" URLString:url param:param success:success failure:failure];
 }
-- (void)callDeleteWithParam:(NSDictionary *)param urlString:(NSString *)url success:(networkCallback)success failure:(networkCallback)failure {
+- (void)callDELETEWithParam:(NSDictionary *)param urlString:(NSString *)url success:(networkCallback)success failure:(networkCallback)failure {
     [self requestWithMethod:@"DELETE" URLString:url param:param success:success failure:failure];
 }
 
@@ -94,35 +94,33 @@
     }
     
     //检查网络连接状态
-    if ([[AFNetworkReachabilityManager sharedManager] isReachable]) {
-        
-        NSLog(@"\n==================================\n\nRequest Start: \n\n %@\n\n==================================", request.URL);
-        
-        __block NSURLSessionDataTask *dataTask = nil;
-        dataTask = [self.httpSessionManager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-            [wSelf.dispatchTable removeObjectForKey:@([dataTask taskIdentifier])];
-            
-            NSData *responseData = responseObject;
-            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-            ZQURLResponse *zqResponse = [[ZQURLResponse alloc] initWithResponse:responseData error:error];
-            [ZQLogTool logDebugInfoWithResponse:httpResponse error:error withRequest:request];
-            if (error) {
-                failure ? failure(zqResponse) : nil;
-            }
-            else {
-                success ? success(zqResponse) : nil;
-            }
-        }];
-        
-        
-        self.dispatchTable[@([dataTask taskIdentifier])] = dataTask;
-        
-        [dataTask resume];
-    }
-    else {
+    if (![[AFNetworkReachabilityManager sharedManager] isReachable]) {
         __notify(noteNetworkUnavailable);
     }
     
+    NSLog(@"\n==================================\n\nRequest Start: \n\n %@\n\n==================================", request.URL);
     
+    __block NSURLSessionDataTask *dataTask = nil;
+    dataTask = [self.httpSessionManager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        [wSelf.dispatchTable removeObjectForKey:@([dataTask taskIdentifier])];
+        
+        NSData *responseData = responseObject;
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        ZQURLResponse *zqResponse = [[ZQURLResponse alloc] initWithResponse:responseData error:error];
+        [ZQLogTool logDebugInfoWithResponse:httpResponse error:error withRequest:request];
+        if (error) {
+            failure ? failure(zqResponse) : nil;
+        }
+        else {
+            success ? success(zqResponse) : nil;
+        }
+    }];
+    
+    
+    self.dispatchTable[@([dataTask taskIdentifier])] = dataTask;
+    
+    [dataTask resume];
+
+
 }
 @end

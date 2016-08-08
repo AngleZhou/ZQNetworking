@@ -13,10 +13,13 @@
 typedef void (^networkCallback)(ZQURLResponse *response);
 
 @interface ZQApiRequest : NSObject
-- (void)callGetWithParam:(NSDictionary *)param urlString:(NSString *)url success:(networkCallback)success failure:(networkCallback)failure;
-- (void)callPostWithParam:(NSDictionary *)param urlString:(NSString *)url success:(networkCallback)success failure:(networkCallback)failure;
-- (void)callPutWithParam:(NSDictionary *)param urlString:(NSString *)url success:(networkCallback)success failure:(networkCallback)failure;
-- (void)callDeleteWithParam:(NSDictionary *)param urlString:(NSString *)url success:(networkCallback)success failure:(networkCallback)failure;
+
++ (instancetype)sharedInstance;
+
+- (void)callGETWithParam:(NSDictionary *)param urlString:(NSString *)url success:(networkCallback)success failure:(networkCallback)failure;
+- (void)callPOSTWithParam:(NSDictionary *)param urlString:(NSString *)url success:(networkCallback)success failure:(networkCallback)failure;
+- (void)callPUTWithParam:(NSDictionary *)param urlString:(NSString *)url success:(networkCallback)success failure:(networkCallback)failure;
+- (void)callDELETEWithParam:(NSDictionary *)param urlString:(NSString *)url success:(networkCallback)success failure:(networkCallback)failure;
 
 - (void)cancelRequestWithRequestID:(NSNumber *)requestID;
 @end
